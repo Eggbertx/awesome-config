@@ -9,6 +9,8 @@ local function messageBox(msg_type,msg_title,message)
 		messageType = naughty.config.presets.warn
 	elseif msg_type == "error" then
 		messageType = naughty.config.presets.critical
+	else
+		messageType = naughty.config.presets.info
 	end
 	naughty.notify({ preset = naughty.config.presets.info,
 		title = msg_title,
