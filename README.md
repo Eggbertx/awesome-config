@@ -8,4 +8,4 @@ mv awesome awesome.bak 2>/dev/null
 git clone https://github.com/eggbertx/awesome-config.git awesome
 ```
 ## Screenshot
-![Screenshot] (awesome-config_screenshot.png)
+![Screenshot](awesome-config_screenshot.png)
