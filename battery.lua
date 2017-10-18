@@ -3,7 +3,6 @@ local gears = require("gears")
 local wibox = require("wibox")
 
 local util = require("util")
--- local batterybar = awful.widget.progressbar()
 
 local battery_text = wibox.widget {
 	markup = "",
@@ -26,12 +25,6 @@ local batterybar = wibox.widget {
 	battery_progress, battery_text,
 	layout = wibox.layout.stack
 }
-
--- batterybar:set_border_color("#000000")
--- batterybar:set_background_color("#222222")
--- batterybar:set_color("#535d6c")
--- batterybar:set_width(50)
--- batterybar.shape = gears.shape.rounded_bar
 
 
 battery_timer = timer({ timeout = 3 })
