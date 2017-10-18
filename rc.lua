@@ -45,7 +45,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal	= "xfce4-terminal"
@@ -105,7 +105,7 @@ myawesomemenu = {
 
 systemmenu = {
 	{ "lock",		function () return true end },
-	{ "restart",	"restart" },
+	{ "restart",	"reboot" },
 	{ "shut down",	"poweroff" }
 }
 
@@ -287,6 +287,8 @@ globalkeys = gears.table.join(
 		{ description = "go back", group = "client" }),
 
 	-- Standard program
+	awful.key({ modkey,		}, "l",      function() awful.spawn("xflock4") end,
+			{	description = "lock the screen", group = "launcher" }),
 	awful.key({ modkey,		}, "Return", function () awful.spawn(terminal) end,
 			{	description = "open a terminal", group = "launcher"}),
 	awful.key({ modkey, "Control" }, "r", awesome.restart,
@@ -567,3 +569,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 wallpaper.initRandWallpaper()
+awful.spawn.with_shell("~/.config/awesome/autorun.sh")
