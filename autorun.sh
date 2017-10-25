@@ -9,5 +9,4 @@ function run {
 
 run compton
 run volumeicon
-run setgamma
 run gnome-screensaver

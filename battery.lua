@@ -26,7 +26,7 @@ local batterybar = wibox.widget {
 	layout = wibox.layout.stack
 }
 
-
+low_battery_warned = false
 battery_timer = timer({ timeout = 3 })
 battery_timer:connect_signal("timeout",
 	function()
@@ -35,16 +35,18 @@ battery_timer:connect_signal("timeout",
 		f:close()
 		battery_text.markup = "<span color=\"#000000\">" .. percent .. "%</span>"
 		percent = tonumber(percent)/100
-		if state == 'Discharging' then
-			battery_progress.color = '#CCCC00'
-			if percent < 0.2 then
-				battery_progress.color = "#ff0000"
-				util.messageBox("error", "Low Battery!", "Plugin or shut down to avoid data loss/corruption")
-			end
-		elseif state == 'Charging' then
+		if percent >= 0.8 then
 			battery_progress.color = '#66CC00'
+			low_battery_warned = false
+		elseif percent < 0.2 then
+			battery_progress.color = '#CCCC00'
+			if low_battery_warned == false then
+				util.messageBox("error", "Low Battery!", "Plugin or shut down to avoid data loss/corruption")
+				low_battery_warned = true
+			end
+			--low_battery_warned = false
 		else
-			-- batterybar:set_color("#535d6c")
+			battery_progress.color = '#CCCC00'
 		end
 		battery_progress.value = percent
 	end
