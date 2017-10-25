@@ -111,6 +111,7 @@ systemmenu = {
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
 							{ "system", systemmenu },
+							{ "file manager", "xdg-open " .. os.getenv("HOME")},
 							{ "open terminal", terminal }
 						 }
 						})

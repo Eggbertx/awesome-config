@@ -6,7 +6,6 @@ local wallpaperDir = os.getenv("HOME") .. "/Pictures/Wallpapers"
 wp_timeout = 4
 wp_timer = timer { timeout = wp_timeout}
 
-wallpaperFile =  "/home/josh/Pictures/pillars_of_creation-wallpaper-1366x768.jpg"
 local function setWallpaper()
 	wallpapers = util.dirFiles(wallpaperDir,true)
 	randWallpaper = util.getRandomElement(wallpapers)
