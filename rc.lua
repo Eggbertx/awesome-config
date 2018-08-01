@@ -95,16 +95,17 @@ local function client_menu_toggle_fn()
 end
 -- }}}
 
+util.messageBox("info","title",terminal .. " -e \"" .. editor .. "\"")
 myawesomemenu = {
 	{ "hotkeys",		 function() return false, hotkeys_popup.show_help end},
 	{ "manual",			 terminal .. " -e man awesome" },
-	{ "edit config",	 editor_cmd .. " " .. awesome.conffile },
+	{ "edit config",	 terminal .. " -e \"" .. editor .. " " .. awesome.conffile .. "\""},
 	{ "restart",		 awesome.restart },
 	{ "quit", function() awesome.quit() end}
 }
 
 systemmenu = {
-	{ "lock",		function () return true end },
+	{ "lock",		"gnome-screensaver-command -l" },
 	{ "restart",	"reboot" },
 	{ "shut down",	"poweroff" }
 }
